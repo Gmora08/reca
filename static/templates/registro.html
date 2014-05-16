@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Registro
+{% endblock %}
+
+{% block content %}
+<div class="row espacio">
+	<div class="col-md-4 col-md-offset-4">
+		<p>
+			<span class="glyphicon glyphicon-user"></span>
+			Inicio de Sesión
+		</p>
+
+		<hr>
+	    {% if messages %}
+			<div class="row">
+		        <div class="col-md-12">
+		            {% for message in messages %}
+		            <div class="alert alert-danger {{ message.tags }} ">
+		                {{ message|safe }}
+		            </div>
+		            {% endfor %}
+		        </div>
+	    	</div>
+	    {% endif %}
+		<form role="form" action="" method="POST">
+			{% csrf_token %}
+
+			{% for campo in form %}
+				<div class="form-group">
+				{{ campo.label_tag }}
+				{{ campo|attr:"class:form-control" }}
+				</div>
+			{% endfor %}
+			<input class="btn btn-primary" type="submit" value="Registrarse">
+			<p><a style="float: right;margin-top: -18px;" href="{% url 'home' %}">Login</a></p>	
+		</form>	
+	</div>
+</div>
+{% endblock %}
+

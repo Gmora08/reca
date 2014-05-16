@@ -1,0 +1,51 @@
+body{
+	background: #FFF;
+}
+
+
+form{
+	display: block;
+	width: 100%;
+}
+
+input, label{
+	display: block;
+	font-size: 1.2em;
+}
+
+input[type=password], input[type=text], input[type=email], label{
+	width: 65% !important;
+}
+
+input[type=submit], input[type=button]{
+	width: 20%;
+}
+
+.help-loggeo{
+	display: block;
+	text-align: right;
+	width: 95%;
+	margin: 0 auto;
+}
+
+form .alert{
+	display: block;
+	width: 65%;
+	padding: 0.3em;
+}
+.hola{
+	color: @navyblue;
+}
+.panel-center{
+	display: block;
+	width: 45%;
+	margin: 0 auto;
+}
+
+.panel-center .row{
+	margin:0;
+}
+
+.panel-center .alert{
+	padding: 8px;
+}

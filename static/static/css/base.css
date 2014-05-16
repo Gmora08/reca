@@ -1,0 +1,22 @@
+body
+{
+	font-family: 'Raleway', sans-serif;
+
+}
+.boton-barra
+{
+	margin-bottom: 4em;
+}
+
+.espacio
+{
+	margin: 80px 0 160px 0;
+}
+
+.titulo
+{
+	color: #006887;
+	padding: 5em 0 2em 0;
+	font-size: 1.3em;
+	text-decoration: underline;
+}

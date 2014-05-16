@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Proyectos
+{% endblock %}
+
+{% block usuario %}
+
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-11 col-md-offset-1 titulo">
+		<p>Proyectos</p>
+	</div>
+</div>
+<div class="row boton-barra">
+	<div class="col-md-2 col-md-offset-10">
+		<a href="{% url 'agregar-proyecto' %}" class="btn btn-primary">Agregar Proyecto</a>
+	</div>
+</div>
+{% if messages %}
+			<div class="row">
+		        <div class="col-md-12">
+		            {% for message in messages %}
+		            <div class="alert alert-danger {{ message.tags }} ">
+		                {{ message|safe }}
+		            </div>
+		            {% endfor %}
+		        </div>
+	    	</div>
+{% endif %}
+<div class="col-md-10 col-md-offset-1">
+	<table class="table table-hover">
+	<tr>
+		<th>#</th>
+		<th>Nombre</th>
+		<th>Inicio</th>
+		<th>Termino</th>
+		<th>Cossto</th>
+		<th>Objetivo</th>
+		<th>Descripcion</th>
+		<th>Cliente</th>
+		<th>Porcentaje</th>
+		<th>Encargado</th>
+		<th>Estado</th>
+	</tr>
+	{% for proyecto in lista_de_proyectos %}
+		<tr>
+			<td>{{ proyecto.id }}</td>
+			<td>{{ proyecto.nombre }}</td>
+			<td>{{ proyecto.fecha_de_inicio }}</td>
+			<td>{{ proyecto.fecha_de_termino }}</td>
+			<td>{{ proyecto.costo }}</td>
+			<td>{{ proyecto.objetivo }}</td>
+			<td>{{ proyecto.descripcion }}</td>
+			<td>{{ proyecto.cliente }}</td>
+			<td>{{ proyecto.porcentaje }}</td>
+			<td>{{ proyecto.encargado.nombre }}</td>
+			<td>{{ proyecto.estado }}</td>
+
+		<tr>	
+	{% endfor %}
+	</table>
+</div>
+
+{% endblock %}
+

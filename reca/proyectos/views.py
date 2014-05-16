@@ -9,7 +9,9 @@ from .models import Proyecto
 
 def proyectos(request):
     print request.user.is_authenticated()
-    # proyectos = Proyecto.objects.filter(encargado = request.user)
+    print request.user.nombre
+    print request.user.id
+    proyectos = Proyecto.objects.filter(encargado = request.user.id)
     return render(request, 'proyectos.html', {'lista_de_proyectos':proyectos})  
 
 class AgregarProyecto(View):
@@ -19,8 +21,8 @@ class AgregarProyecto(View):
     def post(self, request):
         form = ProyectoForm(request.POST)
         if form.is_valid():
-            form.save(encargado=request.user.id)
-            messages.success(request, u"Proyecto %s creado con exito" % request.POST['nombre'])
+            form.save(usuario=request.user)
+            messages.success(request, u"Proyecto %s creado con exito " % request.POST['nombre'])
             return redirect(reverse('proyectos'))
         else:
             messages.error(request, u"Verifica los datos ingresados")

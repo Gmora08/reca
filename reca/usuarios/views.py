@@ -14,16 +14,13 @@ class Login(View):
 		form = AuthenticationForm()
 		return render(request, 'login.html', {'form':form})
 	def post(self, request):
-		form = AuthenticationForm(request.POST)
-		if form.is_valid():
-			user = authenticate(email=request.POST['email'], password=request.POST['password'])
-			if user is not None:
-				return redirect(reverse('proyectos'))
+		email = request.POST['email']
+		password = request.POST['password']
+		user = authenticate(email=email, password=password)
+		if user is not None:
+			django_login(request, user)
+			return redirect(reverse('proyectos'))
 				
-			else:
-				messages.error(request, u'Usuario/Password incorrectos')
-				return render(request, 'login.html', {'form': form})
-
 		else:
 			messages.error(request, u'Usuario/Password incorrectos')
 			return render(request, 'login.html', {'form': form})
