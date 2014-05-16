@@ -1,0 +1,22 @@
+header{
+	display: block;
+	background: #005073;
+	height: 60px;
+	margin-bottom: 2em;
+	padding: 10px;
+}
+
+header a{
+	display: block;
+	height: 100%;
+}
+
+
+header img{
+	display: block;
+	height: 100%;
+}
+
+header .logo{
+	margin-left: 15px;
+}

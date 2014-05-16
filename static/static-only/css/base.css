@@ -1,90 +1,22 @@
 body
 {
-	font-family: 'PT Sans', sans-serif;
-	margin: 0em;
-	padding: 0em;	
+	font-family: 'Raleway', sans-serif;
+
+}
+.boton-barra
+{
+	margin-bottom: 4em;
 }
 
-
-input
+.espacio
 {
-	border: 1px solid #D2D3D5;
-	border-radius: 0.5em;
-	color: #D2D3D5;
-	padding: 1.2em;
-	width: 60%;
+	margin: 80px 0 160px 0;
 }
 
-input:focus
+.titulo
 {
-	border: 1px solid #0052CC;
-	color: #0052CC;
-	outline: 0px;
-}
-
-form div
-{
-	padding: 0.5em 0;
-}
-
-form p
-{
-	color: #0C387A;
-	padding: 1.2em 0;
+	color: #006887;
+	padding: 5em 0 2em 0;
 	font-size: 1.3em;
-}
-
-#entrar
-{
-	background: white;
-	border: 1px solid #0052CC;
-	color: #0052CC;
-	width: 30%;
-}
-
-#entrar:hover
-{
-	background: #0052CC;
-	color: white;
-	width: 32%;
-}
-
-#genero
-{
-	width: 50%;
-}
-
-#registro
-{
-	background: #D2D3D5;
-	border-radius: 0 0 1em 1em;
-	margin-top: 1em;
-	text-align: right;
-}
-
-#registro a
-{
-	color: white;
-	padding-right: 0.5em;
-}
-
-.cuadro
-{
-	border: 1px solid #D2D3D5;
-	border-radius: 1em;
-	text-align: center;
-	margin: 5em 25em;
-}
-
-.cuadro form div span
-{
-	color: #A3A3C2;
-	font-size: 0.8em;
-	padding-right:0.2em; 
-
-}
-
-.div-chico
-{
-	width: 41%;
+	text-decoration: underline;
 }
