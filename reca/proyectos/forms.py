@@ -1,11 +1,15 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Proyecto
+from django.forms.fields import DateField
 
-class ProyectoForm(ModelForm):
-	def save(self, usuario=None):
-		self.instance.encargado = usuario
-		super(ProyectoForm,self).save()
 
-	class Meta:
-		model = Proyecto
-		fields = '__all__'
+class ProyectoForm(forms.ModelForm):
+    
+    def save(self, usuario=None):
+        self.instance.encargado = usuario
+        super(ProyectoForm,self).save()
+
+    class Meta:
+        model = Proyecto
+
+        

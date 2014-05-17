@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'widget_tweaks',
+    'bootstrap3',
     'usuarios',
     'proyectos',
 )

@@ -22,7 +22,11 @@ urlpatterns = patterns('',
 
     #URL's de proyectos
     url(r'^proyecto/$', proyectosViews.proyectos, name='proyectos'),
-    url(r'^proyecto/agregar/$', proyectosViews.AgregarProyecto.as_view(), name='agregar-proyecto')
+    url(r'^proyecto/agregar/$', proyectosViews.AgregarProyecto.as_view(), name='agregar-proyecto'),
+    url(r'^proyecto/editar/(?P<id_proyecto>\d{1,})/$', proyectosViews.EditarProyecto.as_view(), name="editar-proyecto"),
+    url(r'^proyecto/borrar/(?P<id_proyecto>\d{1,})/$', proyectosViews.borrarProyecto, name="borrar-proyecto"),
+
+
 )
 
 if settings.DEBUG:

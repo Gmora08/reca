@@ -16,7 +16,7 @@ class Proyecto(models.Model):
 		('N','Normal'),
 		('AP','Alta prioridad'),		
 	)
-	estado = models.CharField(max_length=2, default='N', choices=ESTADO_CHOICES)
+	estado = models.CharField(max_length=2, choices=ESTADO_CHOICES)
 
 	
 

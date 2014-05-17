@@ -23,7 +23,7 @@ class Login(View):
 				
 		else:
 			messages.error(request, u'Usuario/Password incorrectos')
-			return render(request, 'login.html', {'form': form})
+			return redirect(reverse('login'))
 
 class Registro(View):
 	def get(self, request):
