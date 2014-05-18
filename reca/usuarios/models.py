@@ -49,7 +49,7 @@ class User(AbstractBaseUser):
     jefe = models.ForeignKey('User', editable=False, null=True)
     is_active = models.BooleanField(default=True, editable=False)
     is_admin = models.BooleanField(default=False, editable=False)
-    is_staff = models.BooleanField(default=False, editable=False)
+    is_staff = models.BooleanField(default=True, editable=False)
 
     objects = MyUserManager()
 

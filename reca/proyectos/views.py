@@ -48,4 +48,4 @@ def borrarProyecto(request, id_proyecto):
     proyecto = get_object_or_404(Proyecto, pk=id_proyecto, encargado = request.user)
     proyecto.delete()
     messages.success(request, u"Proyecto eliminado")
-    return redirect(reverse('proyectos'))
+    return redirect(reverse('proyectos'))   

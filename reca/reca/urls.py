@@ -26,6 +26,11 @@ urlpatterns = patterns('',
     url(r'^proyecto/editar/(?P<id_proyecto>\d{1,})/$', proyectosViews.EditarProyecto.as_view(), name="editar-proyecto"),
     url(r'^proyecto/borrar/(?P<id_proyecto>\d{1,})/$', proyectosViews.borrarProyecto, name="borrar-proyecto"),
 
+    #URL's de analistas
+    url(r'^analistas/$', usuariosViews.analistas, name='analistas'),
+    url(r'^analistas/agregar/$', usuariosViews.AgregarAnalista.as_view(), name='agregar-analista'),
+    url(r'^analistas/editar/(?P<id_analista>\d{1,})/$', usuariosViews.EditarAnalista.as_view(), name='editar-analista'),
+    url(r'^analistas/borrar/(?P<id_analista>\d{1,})/$', usuariosViews.borrarAnalista, name="borrar-analista")
 
 )
 
