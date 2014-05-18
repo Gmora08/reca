@@ -1,22 +1,109 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?66bz2k');
+	src:url('fonts/icomoon.eot?#iefix66bz2k') format('embedded-opentype'),
+		url('fonts/icomoon.woff?66bz2k') format('woff'),
+		url('fonts/icomoon.ttf?66bz2k') format('truetype'),
+		url('fonts/icomoon.svg?66bz2k#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+	content: "\e600";
+}
+.icon-pencil:before {
+	content: "\e601";
+}
+.icon-book:before {
+	content: "\e602";
+}
+.icon-stack:before {
+	content: "\e603";
+}
+.icon-user:before {
+	content: "\e604";
+}
+.icon-borrar:before {
+	content: "\e605";
+}
+.icon-listo:before {
+	content: "\e606";
+}
+.icon-add:before {
+	content: "\e607";
+}
+.icon-exit:before {
+	content: "\e608";
+}
+
+
+
 body
 {
 	font-family: 'Raleway', sans-serif;
 
 }
-.boton-barra
+footer p
 {
-	margin-bottom: 4em;
+	margin-left: 2em;
+	color: gray;
 }
 
-.espacio
+ol
 {
-	margin: 80px 0 160px 0;
+	margin-left: 0.5em;
+}
+
+ol li
+{
+	padding: 0.3em;
+}
+
+#logout
+{
+	color: white
+}
+
+#logout:hover
+{
+	color: #aeaeae;
 }
 
 .titulo
 {
-	color: #006887;
-	padding: 5em 0 2em 0;
-	font-size: 1.3em;
-	text-decoration: underline;
+	font-size: 2em;
+	color: rgba(47, 105, 158, 0.72);
+	text-decoration: blink;
+	margin: 1em 0 0 5em;
 }
+
+.espacio-2em
+{
+	margin-top: 2em;
+}
+
+.espacio-3em
+{
+	margin-top: 3em;
+}
+
+.login
+{
+	margin: 4em;
+}
+

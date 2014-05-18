@@ -1,69 +1,99 @@
-{% extends 'base.html' %}
+{% extends 'base_jefe.html' %}
 {% load widget_tweaks %}
+
+{% block usuario %}
+    <a id="logout"  href="{% url 'logout' %}">Cerrar Sesión</a>
+{% endblock %}
 
 {% block titulo %}
 Proyectos
 {% endblock %}
 
-{% block usuario %}
+{% block navigation %}
+	<ol class="breadcrumb">
+		<li><a href=""><span class="icon-home"></span> </a></li>
+  		<li class="active">Proyectos</li>
+	</ol>
+{% endblock %}
 
+{% block barra %}
+<ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="{% url 'proyectos' %}">Proyectos</a></li>
+    <li><a href="{% url 'analistas' %}">Analistas</a></li>
+    <li><a href="#">Iteraciones</a></li>
+    <li><a href="#">Requerimientos</a></li>                
+</ul>
 {% endblock %}
 
 {% block content %}
+
 <div class="row">
-	<div class="col-md-11 col-md-offset-1 titulo">
-		<p>Proyectos</p>
+	<div class="col-md-9">	
+		<p class="titulo"><span class="icon-book"></span> Proyectos</p>
+	</div>
+	<div class="col-md-3 espacio-2em">
+		<a href="{% url 'agregar-proyecto' %}" class="btn btn-primary">			Agregar Proyecto
+		</a>
 	</div>
 </div>
-<div class="row boton-barra">
-	<div class="col-md-2 col-md-offset-10">
-		<a href="{% url 'agregar-proyecto' %}" class="btn btn-primary">Agregar Proyecto</a>
-	</div>
-</div>
+
+
+
 {% if messages %}
-			<div class="row">
-		        <div class="col-md-12">
-		            {% for message in messages %}
-		            <div class="alert alert-danger {{ message.tags }} ">
-		                {{ message|safe }}
-		            </div>
-		            {% endfor %}
-		        </div>
-	    	</div>
-{% endif %}
-<div class="col-md-10 col-md-offset-1">
-	<table class="table table-hover">
-	<tr>
-		<th>#</th>
-		<th>Nombre</th>
-		<th>Inicio</th>
-		<th>Termino</th>
-		<th>Cossto</th>
-		<th>Objetivo</th>
-		<th>Descripcion</th>
-		<th>Cliente</th>
-		<th>Porcentaje</th>
-		<th>Encargado</th>
-		<th>Estado</th>
-	</tr>
-	{% for proyecto in lista_de_proyectos %}
+        <div class="row">
+        <div class="col-md-1"></div>
+        {% for status in messages %}
+            <div class="col-md-10">
+                <div class="alert alert-{{status.tags}} alert-dismissable">{{status}}</div>
+            </div>
+        {% endfor %}
+        <div class="col-md-1"></div>
+
+        </div>
+        <br>
+    {% endif %}
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 espacio-3em">
+		<table class="table table-hover">
 		<tr>
-			<td>{{ proyecto.id }}</td>
-			<td>{{ proyecto.nombre }}</td>
-			<td>{{ proyecto.fecha_de_inicio }}</td>
-			<td>{{ proyecto.fecha_de_termino }}</td>
-			<td>{{ proyecto.costo }}</td>
-			<td>{{ proyecto.objetivo }}</td>
-			<td>{{ proyecto.descripcion }}</td>
-			<td>{{ proyecto.cliente }}</td>
-			<td>{{ proyecto.porcentaje }}</td>
-			<td>{{ proyecto.encargado.nombre }}</td>
-			<td>{{ proyecto.estado }}</td>
-
-		<tr>	
-	{% endfor %}
-	</table>
+			<th>#</th>
+			<th>Nombre</th>
+			<th>Inicio</th>
+			<th>Termino</th>
+			<th>Cossto</th>
+			<th>Objetivo</th>
+			<th>Descripcion</th>
+			<th>Cliente</th>
+			<th>Porcentaje</th>
+			<th>Estado</th>
+			<th><span class="glyphicon glyphicon-cog"></span></th>
+		</tr>
+		{% for proyecto in lista_de_proyectos %}
+			<tr>
+				<td>{{ proyecto.id }}</td>
+				<td>{{ proyecto.nombre }}</td>
+				<td>{{ proyecto.fecha_de_inicio }}</td>
+				<td>{{ proyecto.fecha_de_termino }}</td>
+				<td>{{ proyecto.costo }}</td>
+				<td>{{ proyecto.objetivo }}</td>
+				<td>{{ proyecto.descripcion }}</td>
+				<td>{{ proyecto.cliente }}</td>
+				<td>{{ proyecto.porcentaje }}</td>
+				<td>{{ proyecto.estado }}</td>
+				<td>
+					<button id="btnGroupDrop1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          				Dropdown <span class="caret"></span>
+        			</button>
+        			<ul class="dropdown-menu" role="menu" aria-labelledby="btnGroupDrop1">
+          				<li><a href="{% url 'editar-proyecto' proyecto.pk %}">Editar</a></li>
+          				<li><a href="{% url 'borrar-proyecto' proyecto.pk %}">Eliminar</a></li>
+        			</ul>
+				</td>
+			<tr>	
+		{% endfor %}
+		</table>
+	</div>
 </div>
-
 {% endblock %}
 
+	
