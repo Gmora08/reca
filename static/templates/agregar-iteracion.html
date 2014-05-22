@@ -1,0 +1,116 @@
+{% extends 'base_jefe.html' %}
+{% load widget_tweaks %}
+{% block titulo %}
+Agregar Iteracion
+{% endblock %}
+
+{% block navigation %}
+	<ol class="breadcrumb">
+		<li><a href="{% url 'proyectos' %}"><span class="icon-home"></span> </a></li>
+  		<li><a href="{% url 'iteraciones' %}">Iteraciones</a></li>
+  		<li class="active">Agregar</li>
+	</ol>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+	<div class="col-md-11 col-md-offset-1 titulo">
+		<p>
+			<span class="glyphicon glyphicon-sort-by-attributes"></span>
+			 Agregar Iteracion
+		</p>
+	</div>
+</div>
+{% if messages %}
+			<div class="row">
+				<div class="col-md-1"></div>
+		        <div class="col-md-10">
+		            {% for message in messages %}
+		            <div class="alert alert-danger {{ message.tags }} ">
+		                {{ message|safe }}
+		            </div>
+		            {% endfor %}
+		        </div>
+				<div class="col-md-1"></div>
+
+	    	</div>
+{% endif %}
+<div class="row">
+	<div class="col-md-3 col-md-offset-8">
+		<a href="{% url 'iteraciones' %}" class="btn btn-danger">
+			Cancelar
+		</a>
+	</div>
+</div>
+<div class="col-md-6 col-md-offset-3">
+
+	<form role="form" action="" method="POST">
+	{% csrf_token %}
+	{% if form.identificador.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.identificador.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.identificador.label_tag }}
+		{{ form.identificador|attr:"class: form-control" }}
+	</div>
+	{% if form.fecha_de_inicio.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.fecha_de_inicio.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.fecha_de_inicio.label_tag }}
+		<input class="form-control" type="date" id="id_fecha_de_inicio" name="fecha_de_inicio">
+	</div>
+	{% if form.fecha_de_termino.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.fecha_de_termino.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.fecha_de_termino.label_tag }}
+		<input class="form-control" type="date" id="id_fecha_de_termino" name="fecha_de_termino">
+	</div>
+	{% if form.porcentaje.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.porcentaje.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.porcentaje.label_tag }}
+		{{ form.porcentaje|attr:"class: form-control" }}
+	</div>
+	{% if form.proyecto.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.proyecto.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.proyecto.label_tag }}
+		{{ form.proyecto|attr:"class: form-control" }}
+	</div>
+	
+	<div class="row">
+		<div class="col-md-3">
+			<input type="submit" class="btn btn-success" value="Agregar">
+		</div>
+		
+	</div>
+</div>
+
+
+{% endblock %}
+
+

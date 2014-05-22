@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'bootstrap3',
     'usuarios',
     'proyectos',
+    'iteraciones',
 )
 
 MIDDLEWARE_CLASSES = (

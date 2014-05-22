@@ -6,21 +6,20 @@
 {% endblock %}
 
 {% block titulo %}
-Proyectos
+Analistas
 {% endblock %}
 
 {% block navigation %}
 	<ol class="breadcrumb">
 		<li><a href=""><span class="icon-home"></span> </a></li>
-  		<li class="active">Proyectos</li>
+  		<li class="active">Analistas</li>
 	</ol>
 {% endblock %}
 
 {% block barra %}
 <ul class="nav nav-pills nav-justified">
-    <li class="active"><a href="{% url 'proyectos' %}">Proyectos</a></li>
-    <li><a href="{% url 'analistas' %}">Analistas</a></li>
-               
+    <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
+    <li class="active"><a href="{% url 'analistas' %}">Analistas</a></li>               
 </ul>
 {% endblock %}
 
@@ -28,15 +27,13 @@ Proyectos
 
 <div class="row">
 	<div class="col-md-9">	
-		<p class="titulo"><span class="icon-book"></span> Proyectos</p>
+		<p class="titulo"><span class="icon-user"></span> Analistas</p>
 	</div>
 	<div class="col-md-3 espacio-2em">
-		<a href="{% url 'agregar-proyecto' %}" class="btn btn-primary">			Agregar Proyecto
+		<a href="{% url 'agregar-analista' %}" class="btn btn-primary">			Agregar Analista
 		</a>
 	</div>
 </div>
-
-
 
 {% if messages %}
         <div class="row">
@@ -55,43 +52,38 @@ Proyectos
 	<div class="col-md-10 col-md-offset-1 espacio-3em">
 		<table class="table table-hover">
 		<tr>
+			<th>#</th>
 			<th>Nombre</th>
-			<th>Inicio</th>
-			<th>Termino</th>
-			<th>Cossto</th>
-			<th>Objetivo</th>
-			<th>Descripcion</th>
-			<th>Cliente</th>
-			<th>Porcentaje</th>
-			<th>Estado</th>
-			<th>
-				<span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span>
-			</th>
+			<th>Apellido Paterno</th>
+			<th>Apellido Materno</th>
+			<th>email</th>
+			<th>Fecha de nacimiento</th>
+			<th>Genero</th>
+			<th>Jefe</th>
+			<th><span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span></th>
 		</tr>
-		{% for proyecto in lista_de_proyectos %}
+		{% for analista in lista_de_analistas %}
 			<tr>
-				<td>{{ proyecto.nombre }}</td>
-				<td>{{ proyecto.fecha_de_inicio }}</td>
-				<td>{{ proyecto.fecha_de_termino }}</td>
-				<td>{{ proyecto.costo|floatformat }}</td>
-				<td>{{ proyecto.objetivo }}</td>
-				<td>{{ proyecto.descripcion }}</td>
-				<td>{{ proyecto.cliente }}</td>
-				<td>{{ proyecto.porcentaje }}</td>
-				<td>{{ proyecto.get_estado_display }}</td>
+				<td>{{ analista.id }}</td>
+				<td>{{ analista.nombre }}</td>
+				<td>{{ analista.apellido_paterno }}</td>
+				<td>{{ analista.apellido_materno }}</td>
+				<td>{{ analista.email }}</td>
+				<td>{{ analista.fecha_de_nacimiento }}</td>
+				<td>{{ analista.genero }}</td>
+				<td>{{ analista.jefe.nombre }}</td>
 				<td>
-					<div class="btn-group">
+				<div class="btn-group">
 				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
 				      </button>
 				      <ul class="dropdown-menu" role="menu">
-				        <li><a href="{% url 'iteraciones' %}"><span class="glyphicon glyphicon-eye-open">&nbsp</span> Iteraciones</a></li>
 				        <li><a href="#"><span class="glyphicon glyphicon-eye-open">&nbsp</span>Requerimientos</a></li>
 				        <li class="divider"></li>
 				        <li>
-				        	<a href="{% url 'editar-proyecto' proyecto.pk %}">Editar</a>
+				        	<a href="{% url 'editar-analista' analista.pk %}">Editar</a>
 				        </li>
 				        <li>
-				        	<a href="{% url 'borrar-proyecto' proyecto.pk %}">Borrar</a>
+				        	<a href="{% url 'borrar-analista' analista.pk %}">Borrar</a>
 				        </li>				        
 				      </ul>
 				    </div>
@@ -103,4 +95,3 @@ Proyectos
 </div>
 {% endblock %}
 
-	

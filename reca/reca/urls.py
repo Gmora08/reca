@@ -6,6 +6,7 @@ from django.contrib import admin
 
 from usuarios import views as usuariosViews
 from proyectos import views as proyectosViews
+from iteraciones import views as iteracionesViews
 
 admin.autodiscover()
 
@@ -20,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^login/$', usuariosViews.Login.as_view(), name='login'),
     url(r'^logout/$', usuariosViews.logout, name='logout'),
 
-    #URL's de proyectos
+    #URL's de proyectosusr
     url(r'^proyecto/$', proyectosViews.proyectos, name='proyectos'),
     url(r'^proyecto/agregar/$', proyectosViews.AgregarProyecto.as_view(), name='agregar-proyecto'),
     url(r'^proyecto/editar/(?P<id_proyecto>\d{1,})/$', proyectosViews.EditarProyecto.as_view(), name="editar-proyecto"),
@@ -30,7 +31,13 @@ urlpatterns = patterns('',
     url(r'^analistas/$', usuariosViews.analistas, name='analistas'),
     url(r'^analistas/agregar/$', usuariosViews.AgregarAnalista.as_view(), name='agregar-analista'),
     url(r'^analistas/editar/(?P<id_analista>\d{1,})/$', usuariosViews.EditarAnalista.as_view(), name='editar-analista'),
-    url(r'^analistas/borrar/(?P<id_analista>\d{1,})/$', usuariosViews.borrarAnalista, name="borrar-analista")
+    url(r'^analistas/borrar/(?P<id_analista>\d{1,})/$', usuariosViews.borrarAnalista, name="borrar-analista"),
+
+    #URL's de iteraciones
+    url(r'^iteracion/$', iteracionesViews.iteraciones, name='iteraciones'),
+    url(r'^iteracion/agregar/$', iteracionesViews.AgregarIteracion.as_view(), name='agregar-iteracion'),
+    url(r'^iteracion/editar/(?P<id_iteracion>\d{1,})/$', iteracionesViews.EditarIteracion.as_view(), name='editar-iteracion'),
+    url(r'^iteracion/borrar/(?P<id_iteracion>\d{1,})/$', iteracionesViews.borrarIteracion, name="borrar-iteracion"),
 
 )
 
