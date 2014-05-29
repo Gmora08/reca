@@ -1,7 +1,7 @@
 {% extends 'base_jefe.html' %}
 {% load widget_tweaks %}
 {% block titulo %}
-Agregar Iteracion
+Agregar Requerimiento
 {% endblock %}
 
 {% block navigation %}
@@ -16,8 +16,8 @@ Agregar Iteracion
 <div class="row">
 	<div class="col-md-11 col-md-offset-1 titulo">
 		<p>
-			<span class="glyphicon glyphicon-sort-by-attributes"></span>
-			 Agregar Iteracion
+			<span class="icon-stack"></span>
+			 Agregar Requerimiento
 		</p>
 	</div>
 </div>
@@ -57,6 +57,40 @@ Agregar Iteracion
 		{{ form.identificador.label_tag }}
 		{{ form.identificador|attr:"class: form-control" }}
 	</div>
+	{% if form.descripcion.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.descripcion.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.descripcion.label_tag }}
+		{{ form.descripcion|attr:"class: form-control" }}
+	</div>
+	{% if form.tipo.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.tipo.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.tipo.label_tag }}
+		{{ form.tipo|attr:"class: form-control" }}
+	</div>
+	{% if form.estado.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.estado.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.estado.label_tag }}
+		{{ form.estado|attr:"class: form-control" }}
+	</div>
+
 	{% if form.fecha_de_inicio.errors %}
 	<div class="form-group">
 		<div class="alert alert-danger">
@@ -79,29 +113,77 @@ Agregar Iteracion
 		{{ form.fecha_de_termino.label_tag }}
 		<input class="form-control" type="date" id="id_fecha_de_termino" name="fecha_de_termino">
 	</div>
-	{% if form.porcentaje.errors %}
+	{% if form.madurez.errors %}
 	<div class="form-group">
 		<div class="alert alert-danger">
-			{{ form.porcentaje.errors }}
+			{{ form.madurez.errors }}
 		</div>
 	</div>
 	{% endif %}
 	<div class="form-group">
-		{{ form.porcentaje.label_tag }}
-		{{ form.porcentaje|attr:"class: form-control" }}
+		{{ form.madurez.label_tag }}
+		{{ form.madurez|attr:"class: form-control" }}
 	</div>
-	{% if form.proyecto.errors %}
+	{% if form.volatilidad.errors %}
 	<div class="form-group">
 		<div class="alert alert-danger">
-			{{ form.proyecto.errors }}
+			{{ form.volatilidad.errors }}
 		</div>
 	</div>
 	{% endif %}
 	<div class="form-group">
-		{{ form.proyecto.label_tag }}
-		{{ form.proyecto|attr:"class: form-control" }}
+		{{ form.volatilidad.label_tag }}
+		{{ form.volatilidad|attr:"class: form-control" }}
+	</div>
+
+	{% if form.complejidad.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.complejidad.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.complejidad.label_tag }}
+		{{ form.complejidad|attr:"class: form-control" }}
+	</div>
+
+	{% if form.prioridad.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.prioridad.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.prioridad.label_tag }}
+		{{ form.prioridad|attr:"class: form-control" }}
+	</div>
+
+	{% if form.analista_asignado.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.analista_asignado.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.analista_asignado.label_tag }}
+		{{ form.analista_asignado|attr:"class: form-control" }}
 	</div>
 	
+	{% if form.iteracion.errors %}
+	<div class="form-group">
+		<div class="alert alert-danger">
+			{{ form.iteracion.errors }}
+		</div>
+	</div>
+	{% endif %}
+	<div class="form-group">
+		{{ form.iteracion.label_tag }}
+		{{ form.iteracion|attr:"class: form-control" }}
+	</div>
+
 	<div class="row">
 		<div class="col-md-3">
 			<input type="submit" class="btn btn-success" value="Agregar">

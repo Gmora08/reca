@@ -1,0 +1,107 @@
+{% extends 'base_jefe.html' %}
+{% load widget_tweaks %}
+
+{% block usuario %}
+    <a id="logout"  href="{% url 'logout' %}"><span class="glyphicon glypicon-log-out"></span> Cerrar Sesión</a>
+{% endblock %}
+
+{% block titulo %}
+Requerimientos
+{% endblock %}
+
+{% block navigation %}
+	<ol class="breadcrumb">
+		<li><a href=""><span class="icon-home"></span> </a></li>
+  		<li class="active">Requerimientos</li>
+	</ol>
+{% endblock %}
+
+{% block barra %}
+<ul class="nav nav-pills nav-justified">
+    <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
+    <li><a href="{% url 'analistas' %}">Analistas</a></li>    
+</ul>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	<div class="col-md-9">	
+		<p class="titulo"><span class="icon-stack"></span> Requerimientos</p>
+	</div>
+	<div class="col-md-3 espacio-2em">
+		<a href="{% url 'agregar-requerimiento' %}" class="btn btn-primary">			Agregar Requerimiento
+		</a>
+	</div>
+</div>
+
+
+
+{% if messages %}
+        <div class="row">
+        <div class="col-md-1"></div>
+        {% for status in messages %}
+            <div class="col-md-10">
+                <div class="alert alert-{{status.tags}} alert-dismissable">{{status}}</div>
+            </div>
+        {% endfor %}
+        <div class="col-md-1"></div>
+
+        </div>
+        <br>
+    {% endif %}
+<div class="row">
+	<div class="col-md-10 col-md-offset-1 espacio-3em">
+		<table class="table table-hover">
+		<tr>
+			<th>Identificador</th>
+			<th>Descripción</th>
+			<th>Tipo</th>
+			<th>Estado</th>
+			<th>Fecha de inicio</th>
+			<th>Fecha de termino</th>
+			<th>Madurez</th>
+			<th>Volatilidad</th>
+			<th>Complejidad</th>
+			<th>Prioridad</th>
+			<th>Analista Asignado</th>
+			<th>Iteracion</th>
+			<th><span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span></th>
+		</tr>
+		{% for requerimiento in lista_de_requerimientos %}
+			<tr>
+				<td>{{requerimiento.identificador}}</td>
+				<td>{{requerimiento.descripcion}}</td>
+				<td>{{requerimiento.tipo}}</td>
+				<td>{{requerimiento.estado}}</td>
+				<td>{{requerimiento.fecha_de_inicio}}</td>
+				<td>{{requerimiento.fecha_de_termino}}</td>
+				<td>{{requerimiento.madurez}}</td>
+				<td>{{requerimiento.volatilidad}}</td>
+				<td>{{requerimiento.complejidad}}</td>
+				<td>{{requerimiento.prioridad}}</td>
+				<td>{{requerimiento.analista_asignado}}</td>
+				<td>{{requerimiento.iteracion}}</td>
+				<td>
+					<div class="btn-group">
+				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
+				      </button>
+				      <ul class="dropdown-menu" role="menu">
+				        <li class="divider"></li>
+				        <li>
+				        	<a href="{% url 'editar-requerimiento' requerimiento.pk %}">Editar</a>
+				        </li>
+				        <li>
+				        	<a href="{% url 'borrar-requerimiento' requerimiento.pk %}">Borrar</a>
+				        </li>				        
+				      </ul>
+				    </div>
+				</td>
+			<tr>	
+		{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
+
+	

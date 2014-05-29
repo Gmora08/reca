@@ -1,0 +1,154 @@
+{% extends 'base_jefe.html' %}
+{% load widget_tweaks %}
+
+{% block titulo %}
+Editar Analista
+{% endblock %}
+
+{% block navigation %}
+	<ol class="breadcrumb">
+		<li><a href="{% url 'proyectos' %}"><span class="icon-home"></span> </a></li>
+  		<li><a href="{% url 'proyectos' %}">Analistas</a></li>
+  		<li class="active">Editar</li>
+	</ol>
+{% endblock %}
+
+{% block content %}
+<div class="row login">
+	<div class="col-md-4 col-md-offset-4">
+		<p>
+			<span class="glyphicon glyphicon-user"></span>
+			Editar Analista
+		</p>
+
+		<hr>
+	    {% if messages %}
+			<div class="row">
+		        <div class="col-md-12">
+		            {% for message in messages %}
+		            <div class="alert alert-danger {{ message.tags }} ">
+		                {{ message|safe }}
+		            </div>
+		            {% endfor %}
+		        </div>
+	    	</div>
+	    {% endif %}
+	    <div class="row">
+	<div class="col-md-3 col-md-offset-8">
+		<a href="{% url 'proyectos' %}" class="btn btn-danger">
+			Cancelar
+		</a>
+	</div>
+</div>
+		<form role="form" action="" method="POST">
+			{% csrf_token %}
+			{% if form.nombre.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.nombre.errors }}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.nombre.label_tag }}
+				{{ form.nombre|attr:"class: form-control" }}
+			</div>
+			{% if form.apellido_paterno.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.apellido_paterno.errors }}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.apellido_paterno.label_tag }}
+				{{ form.apellido_paterno|attr:"class: form-control" }}
+			</div>
+			{% if form.apellido_materno.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.apellido_materno.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.apellido_materno.label_tag }}
+				{{ form.apellido_materno|attr:"class: form-control" }}
+			</div>
+			{% if form.email.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.email.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.email.label_tag }}
+				{{ form.email|attr:"class: form-control" }}
+			</div>
+			{% if form.password1.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.password1.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.password1.label_tag }}
+				<input class ="form-control" type="password" id="id_password1" name="password1" value="{{ form.password1.value }}">
+			</div>
+			{% if form.password2.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.password2.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.password2.label_tag }}
+				<input class ="form-control" type="password" id="id_password2" name="password2" value="{{ form.password2.value }}">
+			</div>
+			{% if form.fecha_de_nacimiento.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.fecha_de_nacimiento.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.fecha_de_nacimiento.label_tag }}
+				<input class ="form-control" type="date" id="id_fecha_de_nacimiento" name="fecha_de_nacimiento" value="{{ form.fecha_de_nacimiento.value|date:'Y-m-d' }}">
+			</div>
+			{% if form.genero.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ form.genero.errors}}
+					</div>
+				</div>
+			{% endif %}
+			<div class="form-group">
+				{{ form.genero.label_tag }}
+				{{ form.genero|attr:"class: form-control" }}
+			</div>
+
+
+			<!-- {% for campo in form %}
+				{% if campo.errors %}
+				<div class="form-group">
+					<div class="alert alert-danger">
+						{{ campo.errors }}
+					</div>
+				</div>
+				{% endif %}
+				<div class="form-group">
+					{{ campo.label_tag }}
+					{{ campo|attr:"class: form-control" }}
+				</div>
+			{% endfor %} -->
+			<input class="btn btn-primary" type="submit" value="Editar">
+
+		</form>	
+	</div>
+</div>
+{% endblock %}
+

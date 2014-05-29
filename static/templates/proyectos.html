@@ -84,8 +84,8 @@ Proyectos
 				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
 				      </button>
 				      <ul class="dropdown-menu" role="menu">
-				        <li><a href="{% url 'iteraciones' %}"><span class="glyphicon glyphicon-eye-open">&nbsp</span> Iteraciones</a></li>
-				        <li><a href="#"><span class="glyphicon glyphicon-eye-open">&nbsp</span>Requerimientos</a></li>
+				        <li><a href="{% url 'iteraciones' proyecto.pk %}"><span class="glyphicon glyphicon-eye-open">&nbsp</span> Iteraciones</a></li>
+				        <li><a href="{% url 'requerimientos' proyecto.pk %}"><span class="glyphicon glyphicon-eye-open">&nbsp</span>Requerimientos</a></li>
 				        <li class="divider"></li>
 				        <li>
 				        	<a href="{% url 'editar-proyecto' proyecto.pk %}">Editar</a>
