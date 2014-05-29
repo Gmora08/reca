@@ -7,3 +7,6 @@ class Iteracion(models.Model):
 	fecha_de_termino = models.DateField()
 	porcentaje = models.FloatField(default=0.0, editable=False)
 	proyecto = models.ForeignKey(Proyecto)
+
+	def __unicode__(self):
+		return self.identificador

@@ -29,7 +29,7 @@ class Requerimiento(models.Model):
 	volatilidad = models.CharField(max_length=1, choices=OPCIONES)
 	complejidad = models.CharField(max_length=1, choices=OPCIONES)
 	prioridad = models.CharField(max_length=1, choices=OPCIONES)
-	analista = models.ForeignKey(User, blank=True, null=True, related_name="analista")
-	jefe_de_analistas = models.ForeignKey(User, editable=False, related_name="jefe")
+	jefe_de_analistas = models.ForeignKey(User, editable=False, related_name="jefe_de_analistas")
+	analista_asignado = models.ForeignKey(User, blank=True, null=True, related_name="analista_asignado")
 	iteracion = models.ForeignKey(Iteracion, null=True, blank=True)
 

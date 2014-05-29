@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'usuarios',
     'proyectos',
     'iteraciones',
+    'requerimientos',
 )
 
 MIDDLEWARE_CLASSES = (

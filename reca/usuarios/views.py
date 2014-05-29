@@ -12,6 +12,7 @@ from .models import User
 
 class Login(View):
     def get(self, request):
+        
         form = AuthenticationForm()
         return render(request, 'login.html', {'form':form})
     def post(self, request):

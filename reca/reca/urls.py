@@ -7,6 +7,7 @@ from django.contrib import admin
 from usuarios import views as usuariosViews
 from proyectos import views as proyectosViews
 from iteraciones import views as iteracionesViews
+from requerimientos import views as requerimientosViews
 
 admin.autodiscover()
 
@@ -34,10 +35,15 @@ urlpatterns = patterns('',
     url(r'^analistas/borrar/(?P<id_analista>\d{1,})/$', usuariosViews.borrarAnalista, name="borrar-analista"),
 
     #URL's de iteraciones
-    url(r'^iteracion/$', iteracionesViews.iteraciones, name='iteraciones'),
+    url(r'^iteracion/(?P<id_proyecto>\d{1,})/$', iteracionesViews.iteraciones, name='iteraciones'),
     url(r'^iteracion/agregar/$', iteracionesViews.AgregarIteracion.as_view(), name='agregar-iteracion'),
     url(r'^iteracion/editar/(?P<id_iteracion>\d{1,})/$', iteracionesViews.EditarIteracion.as_view(), name='editar-iteracion'),
     url(r'^iteracion/borrar/(?P<id_iteracion>\d{1,})/$', iteracionesViews.borrarIteracion, name="borrar-iteracion"),
+
+    url(r'^requerimieto/(?P<id_proyecto>\d{1,})/$', requerimientosViews.requerimientos, name='requerimientos'),
+    url(r'^requerimieto/agregar/$', requerimientosViews.AgregarRequerimiento.as_view(), name='agregar-requerimiento'),
+    url(r'^requerimieto/editar/(?P<id_requerimiento>\d{1,})/$', requerimientosViews.EditarRequerimiento.as_view(), name='editar-requerimiento'),
+    url(r'^requerimieto/borrar/(?P<id_requerimiento>\d{1,})/$', requerimientosViews.borrarRequerimiento, name="borrar-requerimiento"),
 
 )
 
