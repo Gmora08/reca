@@ -11,6 +11,7 @@ class Proyecto(models.Model):
 	cliente = models.CharField(max_length=255, blank=True,null=True)
 	porcentaje = models.FloatField(verbose_name=u'Porcentaje de avance', default=0.00, editable=False)
 	encargado = models.ForeignKey(User, editable=False)
+
 	ESTADO_CHOICES = (
 		('A','Atrasado'),
 		('N','Normal'),

@@ -12,5 +12,5 @@ class ProyectoForm(forms.ModelForm):
     class Meta:
         model = Proyecto
         fields = ('nombre', 'fecha_de_inicio', 'costo', 'objetivo', 'descripcion', 'cliente', 'estado')
-        widgets = {'fecha_de_inicio': forms.DateInput(format='%d/%m/%Y')}
+        widgets = {'fecha_de_inicio': forms.DateInput(format='%Y/%m/%d')}
         

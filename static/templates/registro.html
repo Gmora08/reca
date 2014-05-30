@@ -14,6 +14,7 @@ Registro
 		</p>
 
 		<hr>
+	    
 	    {% if messages %}
 			<div class="row">
 		        <div class="col-md-12">
@@ -25,15 +26,17 @@ Registro
 		        </div>
 	    	</div>
 	    {% endif %}
+
 		<form role="form" action="" method="POST">
 			{% csrf_token %}
 			{% if form.nombre.errors %}
 				<div class="form-group">
 					<div class="alert alert-danger">
-						{{ form.nombre.errors }}
+						{{form.nombre.errors}}
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.nombre.label_tag }}
 				{{ form.nombre|attr:"class: form-control" }}
@@ -45,6 +48,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.apellido_paterno.label_tag }}
 				{{ form.apellido_paterno|attr:"class: form-control" }}
@@ -56,6 +60,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.apellido_materno.label_tag }}
 				{{ form.apellido_materno|attr:"class: form-control" }}
@@ -67,6 +72,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.email.label_tag }}
 				{{ form.email|attr:"class: form-control" }}
@@ -78,6 +84,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.password1.label_tag }}
 				{{ form.password1|attr:"class: form-control" }}
@@ -89,6 +96,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.password2.label_tag }}
 				{{ form.password2|attr:"class: form-control" }}
@@ -100,6 +108,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+
 			<div class="form-group">
 				{{ form.fecha_de_nacimiento.label_tag }}
 				<input class="form-control" type="date" id="id_fecha_de_nacimiento" name="fecha_de_nacimiento">
@@ -111,6 +120,7 @@ Registro
 					</div>
 				</div>
 			{% endif %}
+			
 			<div class="form-group">
 				{{ form.genero.label_tag }}
 				{{ form.genero|attr:"class: form-control" }}

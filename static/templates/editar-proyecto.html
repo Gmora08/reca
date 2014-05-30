@@ -66,7 +66,7 @@ Agregar Proyecto
 	{% endif %}
 	<div class="form-group">
 		{{ form.fecha_de_inicio.label_tag }}
-		<input class ="form-control" type="date" id="id_fecha_de_inicio" name="fecha_de_inicio" value="{{ form.fecha_de_inicio.value|date:'Y-m-d' }}">
+		<input class ="form-control"  type="date" id="id_fecha_de_inicio" name="fecha_de_inicio" value="{{ form.fecha_de_inicio.value|date:'Y-m-d' }}">
 	</div>
 	{% if form.costo.errors %}
 	<div class="form-group">

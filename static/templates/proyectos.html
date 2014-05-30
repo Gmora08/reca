@@ -55,31 +55,27 @@ Proyectos
 	<div class="col-md-10 col-md-offset-1 espacio-3em">
 		<table class="table table-hover">
 		<tr>
+			<th>
+				<span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span>
+			</th>
+			<th>Id</th>
 			<th>Nombre</th>
 			<th>Inicio</th>
 			<th>Termino</th>
-			<th>Cossto</th>
+			<th>Costo</th>
 			<th>Objetivo</th>
 			<th>Descripcion</th>
 			<th>Cliente</th>
 			<th>Porcentaje</th>
 			<th>Estado</th>
-			<th>
-				<span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span>
-			</th>
+			<th>Iteraci&oacutenes</th>
+			<th>Requerimientos</th>
+			
 		</tr>
 		{% for proyecto in lista_de_proyectos %}
 			<tr>
-				<td>{{ proyecto.nombre }}</td>
-				<td>{{ proyecto.fecha_de_inicio }}</td>
-				<td>{{ proyecto.fecha_de_termino }}</td>
-				<td>{{ proyecto.costo|floatformat }}</td>
-				<td>{{ proyecto.objetivo }}</td>
-				<td>{{ proyecto.descripcion }}</td>
-				<td>{{ proyecto.cliente }}</td>
-				<td>{{ proyecto.porcentaje }}</td>
-				<td>{{ proyecto.get_estado_display }}</td>
 				<td>
+
 					<div class="btn-group">
 				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
 				      </button>
@@ -96,6 +92,18 @@ Proyectos
 				      </ul>
 				    </div>
 				</td>
+				<td>{{proyecto.pk}}</td>
+				<td>{{ proyecto.nombre }}</td>
+				<td>{{ proyecto.fecha_de_inicio }}</td>
+				<td>{{ proyecto.fecha_de_termino }}</td>
+				<td>{{ proyecto.costo|floatformat }}</td>
+				<td>{{ proyecto.objetivo }}</td>
+				<td>{{ proyecto.descripcion }}</td>
+				<td>{{ proyecto.cliente }}</td>
+				<td>{{ proyecto.porcentaje }}</td>
+				<td>{{ proyecto.get_estado_display }}</td>
+				<td>{{ proyecto.nIteraciones }}</td>
+				<td>{{ valoralowey }} </td>
 			<tr>	
 		{% endfor %}
 		</table>
