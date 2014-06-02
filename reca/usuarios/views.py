@@ -17,8 +17,6 @@ from datetime import date
 
 class Login(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            return redirect(reverse('proyectos'))
         form = AuthenticationForm()
         return render(request, 'login.html', {'form':form})
     def post(self, request):
@@ -35,11 +33,7 @@ class Login(View):
 
 class Registro(View):
     def get(self, request):
-        if request.user.is_authenticated:
-            if request.user.jefe:
-                return redirect(reverse('requerimientos-analista'))
-            else:
-                return redirect(reverse('proyectos'))
+       
         form = RegistrationForm()
         return render(request, 'registro.html', {'form':form})
     def post(self, request):

@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import Count
 from .forms import ProyectoForm
 from .models import Proyecto
 
@@ -16,8 +16,7 @@ from requerimientos.models import Requerimiento
 def proyectos(request):
     print request.user.is_authenticated()
     print request.user.id
-    Count = None
-    proyectos = Proyecto.objects.filter(encargado = request.user.id).annotate(nIteraciones=Count('iteracion')).annotate(nRequerimientos=Count('requerimiento'))
+    proyectos = Proyecto.objects.filter(encargado = request.user.id).annotate(nIteraciones=Count('iteracion'))#.annotate(nRequerimientos=Count(''))
     return render(request, 'proyectos.html', {'lista_de_proyectos':proyectos})  
 
 class AgregarProyecto(View):
