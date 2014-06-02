@@ -12,7 +12,7 @@ class RequerimientoForm(forms.ModelForm):
 
     class Meta:
         model = Requerimiento
-
+       
     def __init__(self, *args, **kwargs):
         jefe = kwargs.pop('jefe')
         super(RequerimientoForm, self).__init__(*args, **kwargs)
@@ -21,4 +21,3 @@ class RequerimientoForm(forms.ModelForm):
         self.fields['analista_asignado'].queryset = User.objects.filter(jefe=jefe)
 
         
-

@@ -88,7 +88,7 @@ Agregar Requerimiento
 	{% endif %}
 	<div class="form-group">
 		{{ form.estado.label_tag }}
-		{{ form.estado|attr:"class: form-control" }}
+		{{ form.estado|attr:"class: form-control"|attr:"hidden" }}
 	</div>
 
 	{% if form.fecha_de_inicio.errors %}
