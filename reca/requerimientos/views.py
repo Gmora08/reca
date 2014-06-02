@@ -13,17 +13,14 @@ from .forms import RequerimientoForm
 from iteraciones.models import Iteracion
 from proyectos.models import Proyecto
 
-@method_decorator(login_required)
 def requerimientos(request, id_proyecto):
     requerimientos = Requerimiento.objects.filter(iteracion__proyecto = id_proyecto)
     return render(request, 'requerimientos.html', {'lista_de_requerimientos':requerimientos})
 
 class AgregarRequerimiento(View):
-    @method_decorator(login_required)
     def get(self, request):
         form = RequerimientoForm(jefe=request.user)
         return render(request, 'agregar-requerimiento.html', {'form': form})
-    @method_decorator(login_required)
     def post(self, request):
         form = RequerimientoForm(request.POST, jefe=request.user)
         
@@ -38,13 +35,11 @@ class AgregarRequerimiento(View):
 
 
 class EditarRequerimiento(View):
-    @method_decorator(login_required)    
     def get(self, request, id_requerimiento):
         requerimiento = get_object_or_404(Requerimiento, pk = id_requerimiento)
         form = RequerimientoForm( instance = requerimiento, jefe = request.user)
         return render(request, 'editar-requerimiento.html', {'form': form, 'id_requerimiento': id_requerimiento})
 
-    @method_decorator(login_required)    
     def post(self, request, id_requerimiento):
         requerimiento = get_object_or_404(Requerimiento, pk = id_requerimiento)
         p = request.POST
@@ -57,7 +52,6 @@ class EditarRequerimiento(View):
         else:
             return render(request, 'editar-requerimiento.html', {'form':form})
 
-@method_decorator(login_required)
 def borrarRequerimiento(request, id_requerimiento):
     requerimiento = get_object_or_404(Requerimiento, pk = id_requerimiento)
     iteracion = get_object_or_404(Iteracion, pk = requerimiento.iteracion.pk)

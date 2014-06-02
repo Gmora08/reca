@@ -23,7 +23,7 @@ class AgregarProyecto(View):
     def get(self, request):
         form = ProyectoForm()
         return render(request, 'agregar-proyecto.html', {'form':form})
-    @method_decorator(login_required)
+
     def post(self, request):
         form = ProyectoForm(request.POST)
 

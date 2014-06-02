@@ -12,18 +12,15 @@ from .forms import IteracionForm
 
 from proyectos.models import Proyecto
 
-@method_decorator(login_required)
 def iteraciones(request, id_proyecto):
     iteraciones = Iteracion.objects.filter(proyecto = id_proyecto)
     return render(request, 'iteraciones.html', {'lista_de_iteraciones':iteraciones})
 
 class AgregarIteracion(View):
-    @method_decorator(login_required)
     def get(self, request):
         form = IteracionForm(usuario=request.user)
         return render(request, 'agregar-iteracion.html', {'form': form})
 
-    @method_decorator(login_required)
     def post(self, request):
         form = IteracionForm(request.POST, usuario=request.user)
         if form.is_valid():
@@ -34,13 +31,11 @@ class AgregarIteracion(View):
             return render(request, 'agregar-iteracion.html', {'form':form})
 
 class EditarIteracion(View):
-    @method_decorator(login_required)
     def get(self, request, id_iteracion):
         iteracion = get_object_or_404(Iteracion, pk = id_iteracion, proyecto__encargado = request.user)
         form = IteracionForm( instance = iteracion, usuario = request.user)
         return render(request, 'editar-iteracion.html', {'form': form, 'id_iteracion': id_iteracion})
     
-    @method_decorator(login_required)
     def post(self, request, id_iteracion):
         iteracion = get_object_or_404(Iteracion, pk = id_iteracion, proyecto__encargado = request.user)
         p = request.POST
@@ -53,7 +48,6 @@ class EditarIteracion(View):
         else:
             return render(request, 'editar-iteracion.html', {'form':form})
 
-@method_decorator(login_required)
 def borrarIteracion(request, id_iteracion):
     iteracion = get_object_or_404(Iteracion, pk = id_iteracion, proyecto__encargado=request.user)
     proyecto = get_object_or_404(Proyecto, pk = iteracion.proyecto.pk)

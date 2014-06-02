@@ -48,7 +48,7 @@ class Registro(View):
             for error in listaDeErrores:
                 messages.success(request, u"%s" % error)
             return render(request, 'registro.html', {'form':form})
-@method_decorator(login_required)
+
 def analistas(request):
     if not request.user.jefe:
         analistas = User.objects.filter(jefe = request.user.id)
@@ -57,12 +57,10 @@ def analistas(request):
         return redirect(reverse('requerimientos-analista'))
 
 class AgregarAnalista(View):
-    @method_decorator(login_required)
     def get(self, request):
         form = RegistrationFormAnalista()
         return render(request, 'agregar-analista.html', {'form':form})
 
-    @method_decorator(login_required)
     def post(self, request):
         form = RegistrationFormAnalista(request.POST)
         validacion = ValidarDatosRegistroUsuarios()
@@ -79,13 +77,11 @@ class AgregarAnalista(View):
 
 
 class EditarAnalista(View):
-    @method_decorator(login_required)
     def get(self, request, id_analista):
         analista = get_object_or_404(User, pk=id_analista, jefe = request.user)
         form = RegistrationFormAnalista(instance=analista)
         return render(request, 'editar-analista.html', {'form':form})
 
-    @method_decorator(login_required)
     def post(self, request, id_analista):
         analista = get_object_or_404(User, pk=id_analista, jefe = request.user)
         form = RegistrationFormAnalista(request.POST, instance=analista)
@@ -102,7 +98,7 @@ class EditarAnalista(View):
             for error in listaDeErrores:
                 messages.success(request, u"%s" % error)
             return render(request, 'editar-analista.html', {'form':form})
-@method_decorator(login_required)
+
 def borrarAnalista(request, id_analista):
     analista = get_object_or_404(User, pk=id_analista, jefe = request.user)
     analista.delete()
