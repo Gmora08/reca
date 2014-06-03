@@ -13,6 +13,9 @@ from .models import Proyecto
 from iteraciones.models import Iteracion
 from requerimientos.models import Requerimiento
 
+import re
+from datetime import date
+
 def proyectos(request):
     print request.user.is_authenticated()
     print request.user.id
