@@ -83,7 +83,7 @@ Analistas
 				        	<a href="{% url 'editar-analista' analista.pk %}">Editar</a>
 				        </li>
 				        <li>
-				        	<a href="{% url 'borrar-analista' analista.pk %}">Borrar</a>
+				        	<a href="{% url 'borrar-analista' analista.pk %}" data-confirm="¿Estás seguro de eliminar al Analista, {{ analista.nombre }}?">Borrar</a>
 				        </li>				        
 				      </ul>
 				    </div>

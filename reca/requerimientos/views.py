@@ -17,6 +17,10 @@ def requerimientos(request, id_proyecto):
     requerimientos = Requerimiento.objects.filter(iteracion__proyecto = id_proyecto)
     return render(request, 'requerimientos.html', {'lista_de_requerimientos':requerimientos})
 
+def requerimientosAnalista(request):
+    requerimientos = Requerimiento.objects.filter(analista_asignado = request.user)
+    return render(request, 'requerimientos-analista.html', {'lista_de_requerimientos': requerimientos})
+
 class AgregarRequerimiento(View):
     def get(self, request):
         form = RequerimientoForm(jefe=request.user)

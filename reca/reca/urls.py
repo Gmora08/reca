@@ -45,6 +45,8 @@ urlpatterns = patterns('',
     url(r'^requerimieto/editar/(?P<id_requerimiento>\d{1,})/$', requerimientosViews.EditarRequerimiento.as_view(), name='editar-requerimiento'),
     url(r'^requerimieto/borrar/(?P<id_requerimiento>\d{1,})/$', requerimientosViews.borrarRequerimiento, name="borrar-requerimiento"),
 
+    url(r'^analistas/requerimientos/$', requerimientosViews.requerimientosAnalista, name='requerimientos-analista')
+
 )
 
 if settings.DEBUG:

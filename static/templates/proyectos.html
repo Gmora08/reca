@@ -87,7 +87,7 @@ Proyectos
 				        	<a href="{% url 'editar-proyecto' proyecto.pk %}">Editar</a>
 				        </li>
 				        <li>
-				        	<a href="{% url 'borrar-proyecto' proyecto.pk %}">Borrar</a>
+				        	<a href="{% url 'borrar-proyecto' proyecto.pk %}" data-confirm="¿Estás seguro de eliminar el Proyecto, {{ proyecto.nombre }}?">Borrar</a>
 				        </li>				        
 				      </ul>
 				    </div>
@@ -103,7 +103,7 @@ Proyectos
 				<td>{{ proyecto.porcentaje }}</td>
 				<td>{{ proyecto.get_estado_display }}</td>
 				<td>{{ proyecto.nIteraciones }}</td>
-				<td>{{ valoralowey }} </td>
+				<td>{{ nRequerimientos }} </td>
 			<tr>	
 		{% endfor %}
 		</table>

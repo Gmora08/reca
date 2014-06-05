@@ -6,8 +6,11 @@ from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
+from django.db.models import Sum
 from .forms import ProyectoForm
 from .models import Proyecto
+import re
+from datetime import date
 
 #Agregado Iteracion para consulta de numero de iteraciones y requerimientos...
 from iteraciones.models import Iteracion
@@ -19,8 +22,9 @@ from datetime import date
 def proyectos(request):
     print request.user.is_authenticated()
     print request.user.id
-    proyectos = Proyecto.objects.filter(encargado = request.user.id).annotate(nIteraciones=Count('iteracion'))#.annotate(nRequerimientos=Count(''))
-    return render(request, 'proyectos.html', {'lista_de_proyectos':proyectos})  
+    nRequerimientos = Requerimiento.objects.filter(iteracion__proyecto__encargado = request.user.id).count
+    proyectos = Proyecto.objects.filter(encargado = request.user.id).annotate(nIteraciones=Count('iteracion'))
+    return render(request, 'proyectos.html', {'lista_de_proyectos':proyectos, 'nRequerimientos':nRequerimientos})  
 
 class AgregarProyecto(View):
     def get(self, request):

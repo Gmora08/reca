@@ -87,12 +87,13 @@ Requerimientos
 				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
 				      </button>
 				      <ul class="dropdown-menu" role="menu">
+				      	<li><a href="#" class="glyphicon glyphicon-star">Asignar</a></li>
 				        <li class="divider"></li>
 				        <li>
 				        	<a href="{% url 'editar-requerimiento' requerimiento.pk %}">Editar</a>
 				        </li>
 				        <li>
-				        	<a href="{% url 'borrar-requerimiento' requerimiento.pk %}">Borrar</a>
+				        	<a href="{% url 'borrar-requerimiento' requerimiento.pk %}" data-confirm="¿Estás seguro de eliminar el Requerimiento, {{ requerimiento.nombre }}?">Borrar</a>
 				        </li>				        
 				      </ul>
 				    </div>
