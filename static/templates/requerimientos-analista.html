@@ -6,33 +6,25 @@
 {% endblock %}
 
 {% block titulo %}
-Iteraciones
+Requerimientos
 {% endblock %}
 
 {% block navigation %}
 	<ol class="breadcrumb">
 		<li><a href=""><span class="icon-home"></span> </a></li>
-  		<li class="active">Iteraciones</li>
+  		<li class="active">Requerimientos</li>
 	</ol>
 {% endblock %}
 
-{% block barra %}
-<ul class="nav nav-pills nav-justified">
-    <li><a href="{% url 'proyectos' %}">Proyectos</a></li>
-    <li><a href="{% url 'analistas' %}">Analistas</a></li>    
-</ul>
-{% endblock %}
+
 
 {% block content %}
 
 <div class="row">
 	<div class="col-md-9">	
-		<p class="titulo"><span class="glyphicon glyphicon-sort-by-attributes"></span> Iteracion</p>
+		<p class="titulo"><span class="icon-stack"></span> Requerimientos</p>
 	</div>
-	<div class="col-md-3 espacio-2em">
-		<a href="{% url 'agregar-iteracion' %}" class="btn btn-primary">			Agregar Iteracion
-		</a>
-	</div>
+	
 </div>
 
 
@@ -55,31 +47,42 @@ Iteraciones
 		<table class="table table-hover">
 		<tr>
 			<th>Identificador</th>
-			<th>Fecha Inicio</th>
-			<th>Fecha Termino</th>
-			<th>Porcentaje</th>
+			<th>Descripción</th>
+			<th>Tipo</th>
+			<th>Estado</th>
+			<th>Fecha de inicio</th>
+			<th>Fecha de termino</th>
+			<th>Prioridad</th>
+			<th>Iteracion</th>
 			<th>Proyecto</th>
 			<th><span style="padding: 0 1.2em;" class="glyphicon glyphicon-cog"></span></th>
 		</tr>
-		{% for iteracion in lista_de_iteraciones %}
+		{% for requerimiento in lista_de_requerimientos %}
 			<tr>
-				<td>{{ iteracion.identificador }}</td>
-				<td>{{ iteracion.fecha_de_inicio }}</td>
-				<td>{{ iteracion.fecha_de_termino }}</td>
-				<td>{{ iteracion.porcentaje }}</td>
-				<td>{{ iteracion.proyecto.nombre }}</td>
+				<td>{{requerimiento.identificador}}</td>
+				<td>{{requerimiento.descripcion}}</td>
+				<td>{{requerimiento.tipo}}</td>
+				<td>{{requerimiento.estado}}</td>
+				<td>{{requerimiento.fecha_de_inicio}}</td>
+				<td>{{requerimiento.fecha_de_termino}}</td>
+				<td>{{requerimiento.madurez}}</td>
+				<td>{{requerimiento.volatilidad}}</td>
+				<td>{{requerimiento.complejidad}}</td>
+				<td>{{requerimiento.prioridad}}</td>
+				<td>{{requerimiento.jefe_de_analistas.proyecto}}</td>
+				<td>{{requerimiento.iteracion}}</td>
 				<td>
 					<div class="btn-group">
 				      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span>
 				      </button>
 				      <ul class="dropdown-menu" role="menu">
-				        <!-- <li><a href="#">Requerimientos</a></li> -->
+				      	<li><a href="#" class="glyphicon glyphicon-star">Asignar</a></li>
 				        <li class="divider"></li>
 				        <li>
-				        	<a href="{% url 'editar-iteracion' iteracion.pk %}">Editar</a>
+				        	<a href="{% url 'editar-requerimiento' requerimiento.pk %}">Editar</a>
 				        </li>
 				        <li>
-				        	<a href="{% url 'borrar-iteracion' iteracion.pk %}" data-confirm="¿Estás seguro de eliminar la iteración, {{ iteracion.nombre }}?">Borrar</a>
+				        	<a href="{% url 'borrar-requerimiento' requerimiento.pk %}">Borrar</a>
 				        </li>				        
 				      </ul>
 				    </div>

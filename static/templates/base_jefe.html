@@ -68,7 +68,23 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {% block scripts %}{% endblock %}
-    <script src="/static/js/jquery.min.js"></script>
+    <script data-require="jquery@*" data-semver="2.0.3" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="/static/js/jquery.min.js"></script>
     <script src="/static/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           $('a[data-confirm]').click(function(ev) {
+               var href = $(this).attr('href');
+               if (!$('#dataConfirmModal').length) {           
+                   $('body').append('<div id="dataConfirmModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="dataConfirmLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h3 id="dataConfirmLabel">Confirmar la eliminación</h3></div><div class="modal-body"></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button><a class="btn btn-danger danger" id="dataConfirmOK">Eliminar</a></div></div></div></div>');
+               } 
+               $('#dataConfirmModal').find('.modal-body').text($(this).attr('data-confirm'));
+               $('#dataConfirmOK').attr('href', href);
+               $('#dataConfirmModal').modal({show:true});
+               return false;
+           });
+        });
+    </script>
+
   </body>
 </html>

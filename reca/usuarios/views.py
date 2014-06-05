@@ -25,7 +25,10 @@ class Login(View):
         user = authenticate(email=email, password=password)
         if user is not None:
             django_login(request, user)
-            return redirect(reverse('proyectos'))
+            if request.user.jefe is None:
+                return redirect(reverse('proyectos'))
+            else: 
+                return redirect(reverse('requerimientos-analista'))
                 
         else:
             messages.error(request, u'Usuario/Password incorrectos')
@@ -69,7 +72,7 @@ class AgregarAnalista(View):
         if (form.is_valid() and len(listaDeErrores)==0):
             form.save(jefe=request.user)
             messages.success(request, u"Analista %s creado con exito " % request.POST['nombre'])
-            return redirect(reverse('proyectos'))
+            return redirect(reverse('analistas'))
         else:
             for error in listaDeErrores:
                 messages.success(request, u"%s" % error)
