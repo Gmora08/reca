@@ -11,6 +11,9 @@ from django.contrib.auth.decorators import login_required
 
 from .forms import AuthenticationForm, RegistrationForm, RegistrationFormAnalista
 from .models import User
+#Agregados import:
+import re
+from datetime import date
 
 class Login(View):
     def get(self, request):
